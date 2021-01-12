@@ -1,7 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-
-
 struct node {
     int value;
     node* next;
@@ -11,6 +9,7 @@ node* createnode(int value) {
     node* temp = (node*)malloc(sizeof(node));
     temp->value = value;
     temp->next = NULL;
+    return temp;
 }
 
 void pushhead(int value) {
@@ -85,7 +84,7 @@ void find() {
         temp2 = temp2->next;
         panjang--;
     }
-    printf("Nilai dari Node Tengah adalah: %d\n", temp2->value);
+    printf("%d\n", temp2->value);
 }
 
 int main() {
@@ -93,10 +92,8 @@ int main() {
     pushhead(20);
     pushhead(30);
     pushhead(40);
-    pushhead(50);
+    pushtail(50);
     print();
     find();
-
-
     return 0;
 }
