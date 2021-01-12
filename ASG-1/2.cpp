@@ -53,7 +53,7 @@ int main() {
     push(50);
     int Minvalue = min(head);
     int Maxvalue = max(head);
-    printf("The range is %d\n", Maxvalue - Minvalue);
+    printf("range: %d\n", Maxvalue - Minvalue);
 
 
     return 0;
