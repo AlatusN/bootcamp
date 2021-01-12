@@ -2,27 +2,24 @@
 #include<stdlib.h>
 
 struct node {
-    int score;
+    int nilai;
     node* next;
 }*head, * tail;
 
-node* createnode(int value) 
-{
+node* createnode(int value) {
     node* temp = (node*)malloc(sizeof(node));
-    temp->score = value;
+    temp->nilai = value;
     temp->next = NULL;
     return temp;
 }
 
-void push(int value, node** curr_node) 
-{
+void push(int value, node** curr_node) {
     node* temp = createnode(value);
     temp->next = *curr_node;
     *curr_node = temp;
 }
 
-void pushtail(int value) 
-{
+void pushtail(int value) {
     node* temp = createnode(value);
     if (!tail) {
         head = tail = temp;
@@ -44,21 +41,21 @@ void swap(node* node1, node* node2) {
     }
     node* temp1 = node1, * temp2 = node2;
     while (temp1 && temp2) {
-        if (temp1->score > temp2->score) {
-            pushtail(temp2->score);
+        if (temp1->nilai > temp2->nilai) {
+            pushtail(temp2->nilai);
             temp2 = temp2->next;
         }
         else {
-            pushtail(temp1->score);
+            pushtail(temp1->nilai);
             temp1 = temp1->next;
         }
     }
     while (temp1) {
-        pushtail(temp1->score);
+        pushtail(temp1->nilai);
         temp1 = temp1->next;
     }
     while (temp2) {
-        pushtail(temp2->score);
+        pushtail(temp2->nilai);
         temp2 = temp2->next;
     }
 }
@@ -66,34 +63,34 @@ void swap(node* node1, node* node2) {
 void print(node* curr_node) {
     while (curr_node) {
         if (curr_node->next == NULL) {
-            printf("%d\n", curr_node->score);
+            printf("%d\n", curr_node->nilai);
             curr_node = curr_node->next;
         }
         else {
-            printf("%d -> ", curr_node->score);
+            printf("%d -> ", curr_node->nilai);
             curr_node = curr_node->next;
         }
     }
 }
 
 int main() {
-    node* x = NULL;
-    node* y = NULL;
+    node* a = NULL;
+    node* b = NULL;
     int n, m, num;
-    printf("Berapa banyak elemen pada daftar pertama(terbesar ke terkecil): ");
+    printf("How many elements on the first linked list(Besar ke Kecil): ");
     scanf("%d", &n);
     for (int i = 0;i < n;i++) {
         scanf("%d", &num);
-        push(num, &x);
+        push(num, &a);
     }
-    print(x);
-    printf("Berapa banyak elemen pada daftar pertama(terbesar ke terkecil): ");
+    print(a);
+    printf("How many elements on the second linked list(Besar ke Kecil): ");
     scanf("%d", &m);
     for (int i = 0;i < n;i++) {
         scanf("%d", &num);
-        push(num, &y);
+        push(num, &b);
     }
-    swap(y, x);
+    swap(b, a);
     print(head);
 
     return 0;
